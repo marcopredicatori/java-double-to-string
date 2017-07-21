@@ -183,24 +183,6 @@ class DoubleToString {
             n = n - ((((Double) (n / (Math.pow(1000, tripCount)))).intValue()) * Math.pow(1000, tripCount));
         }
 
-        // In case of negative precision, the last -prec digits are replaced with zeroes
-        if (prec < 0) {
-
-            int positionsToBeZeroed = (-prec) + (((-prec) - 1) / 3);
-            int curPos = string.length() - 1;
-            StringBuilder sx = new StringBuilder(string);
-
-            while (curPos >= (string.length() - positionsToBeZeroed) &&
-                    curPos >= 0
-                    ) {
-                if (!sx.substring(curPos, curPos + 1).equalsIgnoreCase(".")) {
-                    sx.replace(curPos, curPos + 1, "0");
-                }
-                curPos--;
-            }
-            string = sx.toString();
-        }
-
         string = sign + string + decPart;
 
         return string;
